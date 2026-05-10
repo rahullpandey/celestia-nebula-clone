@@ -2,10 +2,10 @@
 
 ## Required
 
-- Public GitHub repository URL: add after push
+- Public GitHub repository URL: https://github.com/rahullpandey/celestia-nebula-clone
 - `/ai-logs/` folder committed: done
 - Loom walkthrough: record after final browser pass
-- Screenshots: capture home, chart, compatibility, and AI chat
+- Screenshots: `screenshots/01-home-horoscope.png`, `screenshots/02-birth-chart.png`, `screenshots/03-compatibility.png`, `screenshots/04-ai-chat.png`
 - Reflection: `REFLECTION.md`
 
 ## Suggested Loom Path

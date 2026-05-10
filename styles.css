@@ -77,14 +77,15 @@ button {
   margin-bottom: 20px;
 }
 
-.app-header,
-.section-header {
+.app-header {
   justify-content: space-between;
   gap: 16px;
 }
 
 .section-header {
-  align-items: flex-end;
+  display: grid;
+  gap: 4px;
+  align-items: start;
   margin-bottom: 18px;
 }
 
