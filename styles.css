@@ -19,7 +19,13 @@
   box-sizing: border-box;
 }
 
+html {
+  width: 100%;
+  overflow-x: hidden;
+}
+
 body {
+  width: 100%;
   min-height: 100vh;
   margin: 0;
   display: grid;
@@ -30,6 +36,8 @@ body {
     linear-gradient(140deg, #070914 0%, #14162c 45%, #10131d 100%);
   color: var(--ink);
   -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+  overscroll-behavior-x: none;
   text-rendering: optimizeLegibility;
 }
 
@@ -45,10 +53,14 @@ button {
 
 .phone-shell {
   position: relative;
-  width: min(100vw, 430px);
+  width: min(100%, 430px);
   min-height: 100vh;
   max-height: 960px;
+  max-width: 100dvw;
+  overflow-x: hidden;
   overflow-y: auto;
+  overscroll-behavior-x: none;
+  -webkit-overflow-scrolling: touch;
   background:
     linear-gradient(rgba(255, 255, 255, 0.04) 1px, transparent 1px),
     linear-gradient(90deg, rgba(255, 255, 255, 0.035) 1px, transparent 1px),
@@ -507,6 +519,53 @@ select {
   padding: 0 12px;
   background: rgba(255, 255, 255, 0.08);
   color: var(--ink);
+  font-size: 16px;
+}
+
+select {
+  -webkit-appearance: none;
+  appearance: none;
+}
+
+.location-field {
+  display: grid;
+  gap: 7px;
+  min-width: 0;
+}
+
+.location-field small {
+  color: rgba(184, 192, 212, 0.78);
+  font-size: 12px;
+  line-height: 1.35;
+}
+
+.location-suggestions {
+  display: flex;
+  gap: 8px;
+  max-width: 100%;
+  overflow-x: auto;
+  padding: 2px 0 4px;
+  scrollbar-width: none;
+}
+
+.location-suggestions::-webkit-scrollbar,
+.prompt-chips::-webkit-scrollbar {
+  display: none;
+}
+
+.location-suggestions[hidden] {
+  display: none;
+}
+
+.location-suggestions button {
+  flex: 0 0 auto;
+  min-height: 34px;
+  border: 1px solid rgba(124, 199, 255, 0.28);
+  border-radius: 999px;
+  padding: 0 12px;
+  background: rgba(124, 199, 255, 0.12);
+  color: var(--ink);
+  font-size: 13px;
 }
 
 .chart-layout {
@@ -517,6 +576,7 @@ select {
 
 .zodiac-wheel {
   width: min(100%, 310px);
+  max-width: 100%;
   filter: drop-shadow(0 24px 44px rgba(0, 0, 0, 0.45));
 }
 
@@ -610,6 +670,7 @@ select {
 .compat-controls {
   gap: 10px;
   margin: 14px 0;
+  min-width: 0;
 }
 
 .compat-controls label {
@@ -730,9 +791,11 @@ select {
 
 .chat-form {
   gap: 8px;
+  min-width: 0;
 }
 
 .chat-form input {
+  min-width: 0;
   flex: 1;
 }
 

@@ -89,3 +89,15 @@ Changes made:
 - Added metadata for mobile/social sharing.
 - Added `.nojekyll` and prepared the repository for GitHub Pages hosting.
 - Added the planned live URL to README and submission notes.
+
+## Iteration: Mobile Stability and Place Recommendations
+
+User reported that location recommendations were not showing, iPhone typing zoomed into the field, and the interface moved left/right while scrolling.
+
+Changes made:
+
+- Added a visible Place recommendation UI with filterable city chips.
+- Selecting a city now updates the chart and compatibility context immediately.
+- Set form fields to 16px to prevent iOS Safari input zoom.
+- Added horizontal overflow clipping and mobile scroll stabilization to the page and app shell.
+- Contained horizontal chip scrolling so it does not move the whole app.

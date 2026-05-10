@@ -122,10 +122,19 @@
             Time
             <input type="time" id="birthTime" value="06:42" />
           </label>
-          <label>
-            Place
-            <input type="text" id="birthPlace" value="Mumbai, India" />
-          </label>
+          <div class="location-field">
+            <label for="birthPlace">Place</label>
+            <input
+              type="text"
+              id="birthPlace"
+              value="Mumbai, India"
+              autocomplete="off"
+              inputmode="search"
+              aria-describedby="locationHint"
+            />
+            <div class="location-suggestions" id="locationSuggestions" aria-label="Location recommendations"></div>
+            <small id="locationHint">Choose a suggestion or type your city manually.</small>
+          </div>
           <button type="submit">Generate chart</button>
         </form>
 

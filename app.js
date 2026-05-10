@@ -60,6 +60,24 @@ const rituals = [
   "Ritual: clean one corner of your space to clear one corner of your mind.",
 ];
 
+const locationRecommendations = [
+  "Mumbai, India",
+  "New Delhi, India",
+  "Bengaluru, India",
+  "Hyderabad, India",
+  "Chennai, India",
+  "Kolkata, India",
+  "Pune, India",
+  "Ahmedabad, India",
+  "Jaipur, India",
+  "Los Angeles, USA",
+  "New York, USA",
+  "London, UK",
+  "Dubai, UAE",
+  "Singapore",
+  "Toronto, Canada",
+];
+
 const houses = [
   ["1st House", "Identity", "Libra rising makes charm a strategy, not a mask."],
   ["2nd House", "Resources", "Scorpio here asks for honest money rituals."],
@@ -200,6 +218,18 @@ function updateBar(selector, value, label) {
   node.textContent = `${label} ${value}%`;
 }
 
+function renderLocationSuggestions(query = "") {
+  const normalizedQuery = query.trim().toLowerCase();
+  const matches = locationRecommendations
+    .filter((place) => !normalizedQuery || place.toLowerCase().includes(normalizedQuery))
+    .slice(0, 5);
+  const suggestions = document.querySelector("#locationSuggestions");
+  suggestions.innerHTML = matches
+    .map((place) => `<button type="button" data-place="${place}">${place}</button>`)
+    .join("");
+  suggestions.hidden = matches.length === 0;
+}
+
 function addMessage(text, type) {
   const node = document.createElement("div");
   node.className = `message ${type}`;
@@ -257,6 +287,28 @@ document.querySelector("#birthForm").addEventListener("submit", (event) => {
 
 document.querySelector("#recalculateCompat").addEventListener("click", recalculateCompatibility);
 
+document.querySelector("#birthPlace").addEventListener("focus", (event) => {
+  renderLocationSuggestions(event.target.value);
+});
+
+document.querySelector("#birthPlace").addEventListener("input", (event) => {
+  renderLocationSuggestions(event.target.value);
+});
+
+document.querySelector("#locationSuggestions").addEventListener("click", (event) => {
+  const button = event.target.closest("button[data-place]");
+  if (!button) return;
+  document.querySelector("#birthPlace").value = button.dataset.place;
+  document.querySelector("#locationSuggestions").hidden = true;
+  renderChart();
+  recalculateCompatibility();
+});
+
+document.addEventListener("click", (event) => {
+  if (event.target.closest(".location-field")) return;
+  document.querySelector("#locationSuggestions").hidden = true;
+});
+
 document.querySelector("#chatForm").addEventListener("submit", (event) => {
   event.preventDefault();
   const input = document.querySelector("#chatInput");
@@ -280,6 +332,7 @@ document.querySelectorAll(".prompt-chips button").forEach((button) => {
 
 document.querySelector("#partnerSign").innerHTML = signs.map((sign) => `<option>${sign}</option>`).join("");
 document.querySelector("#partnerSign").value = "Leo";
+renderLocationSuggestions(document.querySelector("#birthPlace").value);
 document.querySelector("#shuffleRitual").addEventListener("click", () => {
   const current = document.querySelector("#ritualText").textContent;
   const next = rituals.find((ritual) => ritual !== current) || rituals[0];
