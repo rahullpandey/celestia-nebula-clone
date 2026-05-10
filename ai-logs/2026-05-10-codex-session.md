@@ -101,3 +101,14 @@ Changes made:
 - Set form fields to 16px to prevent iOS Safari input zoom.
 - Added horizontal overflow clipping and mobile scroll stabilization to the page and app shell.
 - Contained horizontal chip scrolling so it does not move the whole app.
+
+## Iteration: iPhone Chat Control Redesign
+
+User pointed to the AI memory, prompt chips, and chat input area as not compatible with iPhone.
+
+Changes made:
+
+- Shortened AI memory text to a compact sign summary.
+- Changed prompt chips from a horizontal overflow strip to a wrapped grid.
+- Made the chat input and Send button fit inside a fixed mobile grid.
+- Reduced chat window height slightly so controls sit more naturally on screen.

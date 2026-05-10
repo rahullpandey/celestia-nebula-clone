@@ -120,7 +120,7 @@ function renderChart() {
   document.querySelector("#risingSign").textContent = chart.rising;
   document.querySelector("#profileTitle").textContent = `${chart.sun} Sun, ${chart.moon} Moon, ${chart.rising} Rising`;
   document.querySelector("#youSigns").textContent = `${chart.sun} / ${chart.moon} / ${chart.rising}`;
-  document.querySelector("#aiMemory").textContent = `Reading ${chart.sun} Sun, ${chart.moon} Moon, ${chart.rising} Rising with live partner context.`;
+  document.querySelector("#aiMemory").textContent = `${chart.sun} Sun • ${chart.moon} Moon • ${chart.rising} Rising`;
 
   const houseLines = document.querySelector("#houseLines");
   const planetMarks = document.querySelector("#planetMarks");
