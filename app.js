@@ -19,20 +19,46 @@ const periods = {
     title: "Let the useful truth be beautiful.",
     body: "A practical Moon sharpens your intuition around routines, money, and the people who keep showing up. Say yes to one grounded conversation, then protect the quiet that helps you hear yourself.",
     scores: [86, 72, 64],
+    focus: "Direct asks",
+    transits: [
+      ["Moon sextile Venus", "Repair conversations land softer after sunset."],
+      ["Mercury in Taurus", "Use fewer words and make the practical offer."],
+      ["Mars trine Pluto", "A small brave action changes the emotional weather."],
+    ],
   },
   weekly: {
     kicker: "May 10 - May 16",
     title: "The week rewards honest calibration.",
     body: "Your chart is asking for a cleaner boundary around emotional labor. Romance grows through specificity, work improves when you name the next step, and luck arrives through a friend-of-a-friend door.",
     scores: [79, 81, 70],
+    focus: "Boundary reset",
+    transits: [
+      ["Venus square Saturn", "Love gets stronger when expectations are explicit."],
+      ["Sun conjunct Jupiter", "Visibility helps; send the pitch or plan the reveal."],
+      ["Moon node activation", "Old habits show up so you can choose differently."],
+    ],
   },
   monthly: {
     kicker: "May 2026",
     title: "A private reset becomes public momentum.",
     body: "This month begins with inner repair and ends with visible movement. Track dreams, recurring conversations, and the tiny moments where your body relaxes. They are your map.",
     scores: [83, 76, 88],
+    focus: "Private reset",
+    transits: [
+      ["New Moon portal", "Set one intention that can survive real life."],
+      ["Jupiter house shift", "Growth comes through teaching, sharing, and being seen."],
+      ["Venus renewal", "Choose the relationship pattern your future self respects."],
+    ],
   },
 };
+
+const rituals = [
+  "Ritual: send the message you keep rewriting.",
+  "Ritual: name one need before you explain it away.",
+  "Ritual: take a ten minute walk before answering emotionally.",
+  "Ritual: write the decision, then circle the part that feels calm.",
+  "Ritual: clean one corner of your space to clear one corner of your mind.",
+];
 
 const houses = [
   ["1st House", "Identity", "Libra rising makes charm a strategy, not a mask."],
@@ -76,6 +102,7 @@ function renderChart() {
   document.querySelector("#risingSign").textContent = chart.rising;
   document.querySelector("#profileTitle").textContent = `${chart.sun} Sun, ${chart.moon} Moon, ${chart.rising} Rising`;
   document.querySelector("#youSigns").textContent = `${chart.sun} / ${chart.moon} / ${chart.rising}`;
+  document.querySelector("#aiMemory").textContent = `Reading ${chart.sun} Sun, ${chart.moon} Moon, ${chart.rising} Rising with live partner context.`;
 
   const houseLines = document.querySelector("#houseLines");
   const planetMarks = document.querySelector("#planetMarks");
@@ -103,11 +130,18 @@ function renderChart() {
        <text x="${x.toFixed(2)}" y="${(y + 5).toFixed(2)}" text-anchor="middle" fill="#f7f1e3" font-size="16">${glyph}</text>`
     );
   });
+  document.querySelector(".zodiac-wheel").classList.remove("chart-pulse");
+  requestAnimationFrame(() => document.querySelector(".zodiac-wheel").classList.add("chart-pulse"));
 
   const houseList = document.querySelector("#houseList");
   houseList.innerHTML = houses
     .map(([house, theme, insight]) => `<article><span>${house}</span><strong>${theme}</strong><span>${insight}</span></article>`)
     .join("");
+
+  const insightTitle = `${chart.sun} instinct, ${chart.moon} weather`;
+  const insightBody = `${chart.rising} rising shapes the first impression, while your ${chart.moon} Moon shows what your nervous system needs before it can trust the next step.`;
+  document.querySelector("#chartInsightTitle").textContent = insightTitle;
+  document.querySelector("#chartInsightBody").textContent = insightBody;
 }
 
 function setPeriod(period) {
@@ -118,10 +152,16 @@ function setPeriod(period) {
   document.querySelector("#loveScore").textContent = `${content.scores[0]}%`;
   document.querySelector("#energyScore").textContent = `${content.scores[1]}%`;
   document.querySelector("#luckScore").textContent = `${content.scores[2]}%`;
+  document.querySelector("#focusTheme").textContent = content.focus;
+  document.querySelector("#transitList").innerHTML = content.transits
+    .map(([title, body]) => `<article><strong>${title}</strong><span>${body}</span></article>`)
+    .join("");
 
   document.querySelectorAll(".period-tab").forEach((button) => {
     button.classList.toggle("active", button.dataset.period === period);
   });
+  document.querySelector(".reading-panel").classList.remove("panel-refresh");
+  requestAnimationFrame(() => document.querySelector(".reading-panel").classList.add("panel-refresh"));
 }
 
 function recalculateCompatibility() {
@@ -130,13 +170,34 @@ function recalculateCompatibility() {
   const score = 62 + ((signs.indexOf(chart.sun) * 7 + signs.indexOf(partner) * 11) % 35);
   const scoreNode = document.querySelector("#compatScore");
   scoreNode.textContent = score;
-  scoreNode.style.background = `radial-gradient(circle, #111421 56%, transparent 58%), conic-gradient(var(--green) 0 ${score}%, rgba(255,255,255,.14) ${score}% 100%)`;
+  scoreNode.style.setProperty("--score", `${score}%`);
 
   const isHigh = score > 84;
   document.querySelector("#compatTitle").textContent = isHigh ? "High voltage, real tenderness" : "Growth bond with useful friction";
   document.querySelector("#compatBody").textContent = isHigh
     ? `${chart.sun} and ${partner} create fast recognition. The relationship thrives when the spark is backed by clear plans, direct reassurance, and repair after intensity.`
     : `${chart.sun} and ${partner} ask each other to translate love languages. The bond can deepen through patience, shared rituals, and naming needs before resentment gathers.`;
+  const chemistry = Math.min(98, score + 7);
+  const trust = Math.max(52, score - 9);
+  const growth = Math.min(96, score + (isHigh ? 2 : 11));
+  updateBar("#chemistryBar", chemistry, "Chemistry");
+  updateBar("#trustBar", trust, "Trust");
+  updateBar("#growthBar", growth, "Growth");
+  document.querySelector("#matchNotes").innerHTML = [
+    ["Spark", isHigh ? "Fast recognition and playful confidence." : "Attraction grows through curiosity."],
+    ["Repair", "Use direct language before guessing motives."],
+    ["Date idea", `${chart.moon} Moon likes a plan with emotional room to breathe.`],
+  ]
+    .map(([label, body]) => `<article><span>${label}</span><strong>${body}</strong></article>`)
+    .join("");
+  scoreNode.classList.remove("score-pop");
+  requestAnimationFrame(() => scoreNode.classList.add("score-pop"));
+}
+
+function updateBar(selector, value, label) {
+  const node = document.querySelector(selector);
+  node.style.setProperty("--value", `${value}%`);
+  node.textContent = `${label} ${value}%`;
 }
 
 function addMessage(text, type) {
@@ -145,6 +206,16 @@ function addMessage(text, type) {
   node.textContent = text;
   document.querySelector("#chatWindow").append(node);
   node.scrollIntoView({ behavior: "smooth", block: "end" });
+}
+
+function showTyping() {
+  const node = document.createElement("div");
+  node.className = "message bot typing";
+  node.setAttribute("aria-label", "AI astrologer is typing");
+  node.innerHTML = "<i></i><i></i><i></i>";
+  document.querySelector("#chatWindow").append(node);
+  node.scrollIntoView({ behavior: "smooth", block: "end" });
+  return node;
 }
 
 function astrologerReply(question) {
@@ -193,7 +264,11 @@ document.querySelector("#chatForm").addEventListener("submit", (event) => {
   if (!value) return;
   addMessage(value, "user");
   input.value = "";
-  setTimeout(() => addMessage(astrologerReply(value), "bot"), 260);
+  const typing = showTyping();
+  setTimeout(() => {
+    typing.remove();
+    addMessage(astrologerReply(value), "bot");
+  }, 620);
 });
 
 document.querySelectorAll(".prompt-chips button").forEach((button) => {
@@ -205,5 +280,12 @@ document.querySelectorAll(".prompt-chips button").forEach((button) => {
 
 document.querySelector("#partnerSign").innerHTML = signs.map((sign) => `<option>${sign}</option>`).join("");
 document.querySelector("#partnerSign").value = "Leo";
+document.querySelector("#shuffleRitual").addEventListener("click", () => {
+  const current = document.querySelector("#ritualText").textContent;
+  const next = rituals.find((ritual) => ritual !== current) || rituals[0];
+  rituals.push(rituals.shift());
+  document.querySelector("#ritualText").textContent = next;
+});
 renderChart();
+setPeriod("daily");
 recalculateCompatibility();

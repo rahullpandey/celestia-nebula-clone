@@ -60,3 +60,19 @@ Verification performed:
 - Commit `/ai-logs/` with the app.
 - Push to a public GitHub repository.
 - Add reflection and screenshot guidance for submission.
+
+## Iteration: Animation, Smart Surfaces, and Organization
+
+User requested the app feel more animated, smarter, more occupied, and better organized.
+
+Changes made:
+
+- Added animated star field and richer orbital motion on the home screen.
+- Added a compact live astrology dashboard with moon phase, best timing window, and focus theme.
+- Added dynamic transit cards that change with Daily, Weekly, and Monthly tabs.
+- Added a ritual/action strip with a shuffle interaction.
+- Added chart intelligence copy that updates after birth chart generation.
+- Added compatibility sub-notes and dynamic Chemistry, Trust, and Growth percentages.
+- Added AI memory context and typing indicator for the astrologer chat.
+- Added micro-animations for cards, bars, chart refresh, score recalculation, and chat messages.
+- Added reduced-motion handling for accessibility.

@@ -8,6 +8,13 @@
   </head>
   <body>
     <main class="phone-shell" aria-label="Celestia astrology app">
+      <div class="sky-layer" aria-hidden="true">
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+
       <section class="screen hero-screen">
         <div class="status-bar">
           <span>9:41</span>
@@ -39,6 +46,21 @@
           <button class="pill-button" data-nav="profile">Tune</button>
         </section>
 
+        <section class="cosmic-dashboard" aria-label="Live astrology dashboard">
+          <article>
+            <span>Moon phase</span>
+            <strong>Waxing crescent</strong>
+          </article>
+          <article>
+            <span>Best window</span>
+            <strong id="bestWindow">7:40 PM</strong>
+          </article>
+          <article>
+            <span>Focus</span>
+            <strong id="focusTheme">Direct asks</strong>
+          </article>
+        </section>
+
         <nav class="tab-row" aria-label="Horoscope periods">
           <button class="period-tab active" data-period="daily">Daily</button>
           <button class="period-tab" data-period="weekly">Weekly</button>
@@ -66,6 +88,11 @@
               <strong id="luckScore">64%</strong>
             </div>
           </div>
+          <div class="action-strip">
+            <span id="ritualText">Ritual: send the message you keep rewriting.</span>
+            <button id="shuffleRitual" type="button">New ritual</button>
+          </div>
+          <div class="transit-list" id="transitList"></div>
         </section>
       </section>
 
@@ -113,6 +140,14 @@
           </div>
         </div>
 
+        <section class="chart-insight-card">
+          <p class="eyebrow">Chart intelligence</p>
+          <h3 id="chartInsightTitle">Cardinal fire, emotional water</h3>
+          <p id="chartInsightBody">
+            Your chart moves fast, but it only trusts momentum when the emotional signal feels clean.
+          </p>
+        </section>
+
         <div class="house-list" id="houseList"></div>
       </section>
 
@@ -154,11 +189,13 @@
             Fire signs create instant momentum, while your Cancer Moon asks for emotional consistency. The strongest path is direct affection plus room for both people to reset.
           </p>
           <div class="report-bars">
-            <span style="--value: 92%">Chemistry</span>
-            <span style="--value: 78%">Trust</span>
-            <span style="--value: 84%">Growth</span>
+            <span id="chemistryBar" style="--value: 92%">Chemistry</span>
+            <span id="trustBar" style="--value: 78%">Trust</span>
+            <span id="growthBar" style="--value: 84%">Growth</span>
           </div>
         </article>
+
+        <section class="match-notes" id="matchNotes"></section>
       </section>
 
       <section class="screen chat-screen">
@@ -170,6 +207,11 @@
         <div class="chat-window" id="chatWindow" aria-live="polite">
           <div class="message bot">I read your Aries Sun, Cancer Moon, and Libra Rising as courage with a soft center. What would you like to understand?</div>
         </div>
+
+        <section class="memory-card">
+          <span>AI memory</span>
+          <strong id="aiMemory">Uses your current Sun, Moon, Rising, and partner sign.</strong>
+        </section>
 
         <div class="prompt-chips">
           <button data-prompt="What is my relationship lesson this month?">Relationship lesson</button>
