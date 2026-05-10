@@ -112,3 +112,13 @@ Changes made:
 - Changed prompt chips from a horizontal overflow strip to a wrapped grid.
 - Made the chat input and Send button fit inside a fixed mobile grid.
 - Reduced chat window height slightly so controls sit more naturally on screen.
+
+## Iteration: Reading Context Card Polish
+
+User noted the compact AI memory row looked odd.
+
+Changes made:
+
+- Renamed the surface to "Reading context" for a more natural product tone.
+- Replaced the cramped one-line right-aligned memory row with a small stacked card.
+- Changed sign text from dot-separated chip text to a readable sentence-style chart summary.

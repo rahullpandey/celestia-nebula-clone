@@ -762,22 +762,38 @@ select {
 .message.typing i:nth-child(3) { animation-delay: 240ms; }
 
 .memory-card {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 12px;
+  display: grid;
+  gap: 8px;
   margin-top: 12px;
-  padding: 12px;
+  padding: 14px;
+  min-width: 0;
+  background:
+    linear-gradient(135deg, rgba(124, 199, 255, 0.1), rgba(245, 211, 106, 0.06)),
+    #15182e;
+}
+
+.memory-card div {
+  display: grid;
+  gap: 3px;
+}
+
+.memory-card strong,
+.memory-card p {
   min-width: 0;
 }
 
 .memory-card strong {
-  min-width: 0;
   color: var(--ink);
-  font-size: 13px;
-  font-weight: 650;
-  line-height: 1.25;
-  text-align: right;
+  font-size: 15px;
+  font-weight: 680;
+  line-height: 1.2;
+}
+
+.memory-card p {
+  margin: 0;
+  color: var(--muted);
+  font-size: 14px;
+  line-height: 1.35;
 }
 
 .prompt-chips {
