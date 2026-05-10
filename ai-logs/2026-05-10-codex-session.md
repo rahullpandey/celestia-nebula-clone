@@ -136,3 +136,17 @@ Changes made:
 - Reduced chart size for better phone fit.
 - Made the Sun/Moon/Rising summary a full-width grid so longer signs fit better.
 - Simplified the house list into one-column readable rows on mobile.
+
+## Iteration: Mobile Scale Corrections From iPhone Screenshots
+
+User shared iPhone screenshots showing the birth chart and compatibility sections still felt oversized and awkward.
+
+Changes made:
+
+- Reduced global heading scale slightly for mobile app feel.
+- Changed Date and Time from native picker inputs to stable text fields to avoid oversized iOS rendering.
+- Reduced natal wheel size so it does not dominate or clip in the viewport.
+- Rebuilt compatibility card layout so the score stacks above both people instead of cramming all three across.
+- Reduced compatibility score ring size.
+- Tightened report text scale and line height.
+- Changed match notes from three cramped columns to stacked readable cards.

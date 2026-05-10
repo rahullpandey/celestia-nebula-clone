@@ -157,7 +157,7 @@ h1 {
   font-family: var(--font-display);
   max-width: 300px;
   margin-bottom: 0;
-  font-size: 32px;
+  font-size: 30px;
   font-weight: 760;
   line-height: 1.05;
   letter-spacing: 0;
@@ -166,7 +166,7 @@ h1 {
 h2 {
   font-family: var(--font-display);
   margin-bottom: 0;
-  font-size: 23px;
+  font-size: 22px;
   font-weight: 720;
   line-height: 1.12;
   letter-spacing: 0;
@@ -174,7 +174,7 @@ h2 {
 
 h3 {
   margin-bottom: 8px;
-  font-size: 18px;
+  font-size: 17px;
   font-weight: 700;
 }
 
@@ -462,7 +462,7 @@ h3 {
   display: grid;
   gap: 12px;
   margin-bottom: 18px;
-  padding: 14px;
+  padding: 13px;
   border: 1px solid var(--line);
   border-radius: 8px;
   background: rgba(20, 24, 43, 0.82);
@@ -544,6 +544,9 @@ select {
   color: var(--ink);
   font-size: 16px;
   min-width: 0;
+  text-align: left;
+  -webkit-appearance: none;
+  appearance: none;
 }
 
 select {
@@ -637,7 +640,7 @@ select {
 }
 
 .zodiac-wheel {
-  width: min(100%, 260px);
+  width: min(100%, 224px);
   max-width: 100%;
   filter: drop-shadow(0 24px 44px rgba(0, 0, 0, 0.45));
 }
@@ -687,14 +690,40 @@ select {
 
 .compat-card {
   display: grid;
-  grid-template-columns: 1fr 108px 1fr;
-  gap: 10px;
+  grid-template-areas:
+    "score score"
+    "you partner";
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
   align-items: center;
   padding: 14px;
 }
 
+.compat-card .person-chip:first-child {
+  grid-area: you;
+}
+
+.compat-card .score-ring {
+  grid-area: score;
+  justify-self: center;
+}
+
+.compat-card .person-chip:last-child {
+  grid-area: partner;
+}
+
 .person-chip {
+  min-width: 0;
   gap: 9px;
+}
+
+.person-chip div {
+  min-width: 0;
+}
+
+.person-chip strong,
+.person-chip small {
+  overflow-wrap: anywhere;
 }
 
 .person-chip > span {
@@ -712,15 +741,15 @@ select {
 .score-ring {
   display: grid;
   place-items: center;
-  width: 108px;
-  height: 108px;
+  width: 96px;
+  height: 96px;
   border-radius: 50%;
   background:
     radial-gradient(circle, #111421 56%, transparent 58%),
     conic-gradient(var(--green) 0 var(--score, 88%), rgba(255, 255, 255, 0.14) var(--score, 88%) 100%);
   color: var(--ink);
   font-family: var(--font-display);
-  font-size: 34px;
+  font-size: 31px;
   font-weight: 780;
   transition: background 500ms ease, transform 260ms ease;
 }
@@ -730,6 +759,8 @@ select {
 }
 
 .compat-controls {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 132px;
   gap: 10px;
   margin: 14px 0;
   min-width: 0;
@@ -743,6 +774,15 @@ select {
   display: grid;
   gap: 10px;
   margin-top: 18px;
+}
+
+.report-card h3 {
+  font-size: 19px;
+}
+
+.report-card p {
+  font-size: 15px;
+  line-height: 1.48;
 }
 
 .report-bars span {
@@ -767,12 +807,12 @@ select {
 }
 
 .match-notes {
-  grid-template-columns: repeat(3, minmax(0, 1fr));
+  grid-template-columns: 1fr;
   margin-top: 14px;
 }
 
 .match-notes article {
-  min-height: 92px;
+  min-height: auto;
   padding: 12px;
 }
 
