@@ -1,0 +1,209 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Celestia - Astrology Companion</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <main class="phone-shell" aria-label="Celestia astrology app">
+      <section class="screen hero-screen">
+        <div class="status-bar">
+          <span>9:41</span>
+          <span>Celestia</span>
+          <span>5G</span>
+        </div>
+
+        <header class="app-header">
+          <div>
+            <p class="eyebrow">Moon in Virgo</p>
+            <h1>Your cosmic briefing</h1>
+          </div>
+          <button class="icon-button" aria-label="Open notifications">✦</button>
+        </header>
+
+        <div class="cosmic-orbit" aria-hidden="true">
+          <div class="sun-core"></div>
+          <span class="planet p1"></span>
+          <span class="planet p2"></span>
+          <span class="planet p3"></span>
+          <span class="planet p4"></span>
+        </div>
+
+        <section class="sign-card">
+          <div>
+            <p class="eyebrow">Personalized for</p>
+            <h2 id="profileTitle">Aries Sun, Cancer Moon, Libra Rising</h2>
+          </div>
+          <button class="pill-button" data-nav="profile">Tune</button>
+        </section>
+
+        <nav class="tab-row" aria-label="Horoscope periods">
+          <button class="period-tab active" data-period="daily">Daily</button>
+          <button class="period-tab" data-period="weekly">Weekly</button>
+          <button class="period-tab" data-period="monthly">Monthly</button>
+        </nav>
+
+        <section class="reading-panel">
+          <p class="panel-kicker" id="readingKicker">Today, May 10</p>
+          <h2 id="readingTitle">Let the useful truth be beautiful.</h2>
+          <p id="readingBody">
+            A practical Moon sharpens your intuition around routines, money, and the people who keep showing up.
+            Say yes to one grounded conversation, then protect the quiet that helps you hear yourself.
+          </p>
+          <div class="metric-grid">
+            <div>
+              <span>Love</span>
+              <strong id="loveScore">86%</strong>
+            </div>
+            <div>
+              <span>Energy</span>
+              <strong id="energyScore">72%</strong>
+            </div>
+            <div>
+              <span>Luck</span>
+              <strong id="luckScore">64%</strong>
+            </div>
+          </div>
+        </section>
+      </section>
+
+      <section class="screen chart-screen" id="chart">
+        <header class="section-header">
+          <p class="eyebrow">Natal Map</p>
+          <h2>Birth chart generator</h2>
+        </header>
+
+        <form class="birth-form" id="birthForm">
+          <label>
+            Date
+            <input type="date" id="birthDate" value="1997-03-21" />
+          </label>
+          <label>
+            Time
+            <input type="time" id="birthTime" value="06:42" />
+          </label>
+          <label>
+            Place
+            <input type="text" id="birthPlace" value="Mumbai, India" />
+          </label>
+          <button type="submit">Generate chart</button>
+        </form>
+
+        <div class="chart-layout">
+          <svg class="zodiac-wheel" viewBox="0 0 300 300" role="img" aria-label="Circular birth chart with zodiac houses">
+            <defs>
+              <radialGradient id="wheelGlow" cx="50%" cy="50%">
+                <stop offset="0%" stop-color="#fff8d7" />
+                <stop offset="48%" stop-color="#7cc7ff" />
+                <stop offset="100%" stop-color="#15182e" />
+              </radialGradient>
+            </defs>
+            <circle cx="150" cy="150" r="138" fill="#101323" stroke="#f5d36a" stroke-width="2" />
+            <circle cx="150" cy="150" r="100" fill="url(#wheelGlow)" opacity=".88" />
+            <circle cx="150" cy="150" r="58" fill="#15182e" stroke="#ffffff" stroke-opacity=".55" />
+            <g id="houseLines"></g>
+            <g id="planetMarks"></g>
+          </svg>
+          <div class="chart-summary">
+            <div><span>Sun</span><strong id="sunSign">Aries</strong></div>
+            <div><span>Moon</span><strong id="moonSign">Cancer</strong></div>
+            <div><span>Rising</span><strong id="risingSign">Libra</strong></div>
+          </div>
+        </div>
+
+        <div class="house-list" id="houseList"></div>
+      </section>
+
+      <section class="screen compatibility-screen">
+        <header class="section-header">
+          <p class="eyebrow">Synastry</p>
+          <h2>Compatibility score</h2>
+        </header>
+
+        <div class="compat-card">
+          <div class="person-chip">
+            <span>R</span>
+            <div>
+              <strong>You</strong>
+              <small id="youSigns">Aries / Cancer / Libra</small>
+            </div>
+          </div>
+          <div class="score-ring" id="compatScore">88</div>
+          <div class="person-chip">
+            <span>M</span>
+            <div>
+              <strong>Partner</strong>
+              <small>Leo / Pisces / Gemini</small>
+            </div>
+          </div>
+        </div>
+
+        <div class="compat-controls">
+          <label>
+            Partner sun sign
+            <select id="partnerSign"></select>
+          </label>
+          <button id="recalculateCompat">Recalculate</button>
+        </div>
+
+        <article class="report-card">
+          <h3 id="compatTitle">Magnetic spark, tender timing</h3>
+          <p id="compatBody">
+            Fire signs create instant momentum, while your Cancer Moon asks for emotional consistency. The strongest path is direct affection plus room for both people to reset.
+          </p>
+          <div class="report-bars">
+            <span style="--value: 92%">Chemistry</span>
+            <span style="--value: 78%">Trust</span>
+            <span style="--value: 84%">Growth</span>
+          </div>
+        </article>
+      </section>
+
+      <section class="screen chat-screen">
+        <header class="section-header">
+          <p class="eyebrow">AI Astrologer</p>
+          <h2>Ask the cosmos</h2>
+        </header>
+
+        <div class="chat-window" id="chatWindow" aria-live="polite">
+          <div class="message bot">I read your Aries Sun, Cancer Moon, and Libra Rising as courage with a soft center. What would you like to understand?</div>
+        </div>
+
+        <div class="prompt-chips">
+          <button data-prompt="What is my relationship lesson this month?">Relationship lesson</button>
+          <button data-prompt="How should I use today's energy?">Today's energy</button>
+          <button data-prompt="What career pattern does my chart show?">Career pattern</button>
+        </div>
+
+        <form class="chat-form" id="chatForm">
+          <input id="chatInput" type="text" placeholder="Ask about love, timing, purpose..." />
+          <button type="submit">Send</button>
+        </form>
+      </section>
+
+      <section class="screen submission-screen">
+        <header class="section-header">
+          <p class="eyebrow">Challenge Ready</p>
+          <h2>Demo checklist</h2>
+        </header>
+        <div class="check-list">
+          <label><input type="checkbox" checked /> Screens: horoscope, chart, compatibility, AI chat</label>
+          <label><input type="checkbox" checked /> End-to-end Loom path: personalize, generate chart, compare, ask AI</label>
+          <label><input type="checkbox" checked /> AI logs: prompt strategy and iterations can be added to reflection</label>
+          <label><input type="checkbox" checked /> Reflection: chart math is simulated, UX and content depth prioritized</label>
+        </div>
+      </section>
+
+      <nav class="bottom-nav" aria-label="Primary navigation">
+        <button class="nav-item active" data-target="hero-screen">Home</button>
+        <button class="nav-item" data-target="chart-screen">Chart</button>
+        <button class="nav-item" data-target="compatibility-screen">Match</button>
+        <button class="nav-item" data-target="chat-screen">Chat</button>
+      </nav>
+    </main>
+
+    <script src="app.js"></script>
+  </body>
+</html>
