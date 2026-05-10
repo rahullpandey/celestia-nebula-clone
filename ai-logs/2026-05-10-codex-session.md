@@ -76,3 +76,16 @@ Changes made:
 - Added AI memory context and typing indicator for the astrologer chat.
 - Added micro-animations for cards, bars, chart refresh, score recalculation, and chat messages.
 - Added reduced-motion handling for accessibility.
+
+## Iteration: Professional Typography and Shareable URL
+
+User requested more professional fonts and a shareable site URL for checking on iPhone.
+
+Changes made:
+
+- Shifted typography to an iOS-native professional font stack using SF Pro system fallbacks.
+- Reduced overly heavy font weights and tuned heading hierarchy.
+- Improved label styling and text rendering for a cleaner app-store-quality feel.
+- Added metadata for mobile/social sharing.
+- Added `.nojekyll` and prepared the repository for GitHub Pages hosting.
+- Added the planned live URL to README and submission notes.

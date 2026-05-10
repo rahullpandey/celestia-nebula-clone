@@ -10,7 +10,9 @@
   --aqua: #7cc7ff;
   --green: #8de0b1;
   --line: rgba(255, 255, 255, 0.14);
-  font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --font-ui: -apple-system, BlinkMacSystemFont, "SF Pro Text", "SF Pro Display", "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  --font-display: "SF Pro Display", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  font-family: var(--font-ui);
 }
 
 * {
@@ -27,6 +29,8 @@ body {
     radial-gradient(circle at 80% 0%, rgba(245, 211, 106, 0.16), transparent 26%),
     linear-gradient(140deg, #070914 0%, #14162c 45%, #10131d 100%);
   color: var(--ink);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
 }
 
 button,
@@ -103,6 +107,7 @@ button {
 .status-bar {
   justify-content: space-between;
   font-size: 12px;
+  font-weight: 500;
   color: var(--muted);
   margin-bottom: 20px;
 }
@@ -124,9 +129,9 @@ button {
   margin: 0 0 5px;
   color: var(--gold);
   text-transform: uppercase;
-  letter-spacing: 0.08em;
-  font-size: 11px;
-  font-weight: 800;
+  letter-spacing: 0.11em;
+  font-size: 10px;
+  font-weight: 700;
 }
 
 h1,
@@ -137,23 +142,28 @@ p {
 }
 
 h1 {
+  font-family: var(--font-display);
   max-width: 300px;
   margin-bottom: 0;
-  font-size: 34px;
-  line-height: 1.03;
+  font-size: 32px;
+  font-weight: 760;
+  line-height: 1.05;
   letter-spacing: 0;
 }
 
 h2 {
+  font-family: var(--font-display);
   margin-bottom: 0;
-  font-size: 24px;
-  line-height: 1.1;
+  font-size: 23px;
+  font-weight: 720;
+  line-height: 1.12;
   letter-spacing: 0;
 }
 
 h3 {
   margin-bottom: 8px;
   font-size: 18px;
+  font-weight: 700;
 }
 
 .icon-button,
@@ -281,10 +291,10 @@ h3 {
 .memory-card span {
   display: block;
   color: #c9d3e9;
-  font-size: 11px;
-  font-weight: 800;
+  font-size: 10px;
+  font-weight: 650;
   text-transform: uppercase;
-  letter-spacing: 0.06em;
+  letter-spacing: 0.1em;
 }
 
 .cosmic-dashboard strong {
@@ -292,6 +302,7 @@ h3 {
   margin-top: 8px;
   color: var(--ink);
   font-size: 14px;
+  font-weight: 660;
   line-height: 1.15;
 }
 
@@ -304,7 +315,8 @@ h3 {
 }
 
 .sign-card h2 {
-  font-size: 17px;
+  font-size: 16px;
+  font-weight: 700;
 }
 
 .pill-button,
@@ -316,7 +328,7 @@ h3 {
   border-radius: 999px;
   background: linear-gradient(135deg, var(--gold), var(--coral));
   color: #160c0c;
-  font-weight: 800;
+  font-weight: 700;
 }
 
 .tab-row {
@@ -335,7 +347,7 @@ h3 {
 .period-tab.active {
   color: #101323;
   background: var(--aqua);
-  font-weight: 800;
+  font-weight: 700;
 }
 
 .reading-panel,
@@ -418,7 +430,8 @@ h3 {
 .chart-summary strong {
   display: block;
   margin-top: 3px;
-  font-size: 20px;
+  font-size: 19px;
+  font-weight: 720;
 }
 
 .birth-form {
@@ -454,7 +467,7 @@ h3 {
   background: rgba(245, 211, 106, 0.16);
   color: var(--gold);
   font-size: 12px;
-  font-weight: 900;
+  font-weight: 700;
 }
 
 .transit-list {
@@ -474,6 +487,7 @@ h3 {
   display: block;
   margin-bottom: 4px;
   font-size: 14px;
+  font-weight: 680;
 }
 
 label {
@@ -481,7 +495,7 @@ label {
   gap: 7px;
   color: var(--muted);
   font-size: 13px;
-  font-weight: 700;
+  font-weight: 620;
 }
 
 input,
@@ -570,7 +584,7 @@ select {
   border-radius: 50%;
   color: #111421;
   background: var(--gold);
-  font-weight: 900;
+  font-weight: 760;
 }
 
 .score-ring {
@@ -583,8 +597,9 @@ select {
     radial-gradient(circle, #111421 56%, transparent 58%),
     conic-gradient(var(--green) 0 var(--score, 88%), rgba(255, 255, 255, 0.14) var(--score, 88%) 100%);
   color: var(--ink);
+  font-family: var(--font-display);
   font-size: 34px;
-  font-weight: 900;
+  font-weight: 780;
   transition: background 500ms ease, transform 260ms ease;
 }
 
@@ -615,7 +630,7 @@ select {
   overflow: hidden;
   background: rgba(255, 255, 255, 0.08);
   font-size: 13px;
-  font-weight: 800;
+  font-weight: 680;
 }
 
 .report-bars span::before {
@@ -759,7 +774,7 @@ select {
 .nav-item.active {
   color: #101323;
   background: var(--ink);
-  font-weight: 900;
+  font-weight: 720;
 }
 
 @keyframes breathe {

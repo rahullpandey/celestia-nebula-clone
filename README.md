@@ -18,6 +18,12 @@ python3 -m http.server 8088
 
 Open `http://127.0.0.1:8088`.
 
+## Live Demo
+
+Open on desktop or iPhone:
+
+https://rahullpandey.github.io/celestia-nebula-clone/
+
 ## Demo Walkthrough
 
 1. Start on the horoscope feed and switch between Daily, Weekly, and Monthly.
