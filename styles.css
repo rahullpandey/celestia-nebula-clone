@@ -104,7 +104,6 @@ button {
   padding: 18px 18px 96px;
 }
 
-.status-bar,
 .app-header,
 .section-header,
 .metric-grid,
@@ -114,14 +113,6 @@ button {
 .chat-form {
   display: flex;
   align-items: center;
-}
-
-.status-bar {
-  justify-content: space-between;
-  font-size: 12px;
-  font-weight: 500;
-  color: var(--muted);
-  margin-bottom: 20px;
 }
 
 .app-header {

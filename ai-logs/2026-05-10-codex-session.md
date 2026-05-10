@@ -150,3 +150,13 @@ Changes made:
 - Reduced compatibility score ring size.
 - Tightened report text scale and line height.
 - Changed match notes from three cramped columns to stacked readable cards.
+
+## Iteration: Remove Fake Status Bar
+
+User asked why the app showed `9:41` and `5G` while already inside a real phone browser.
+
+Changes made:
+
+- Removed the fake status bar row from the app.
+- Removed associated CSS.
+- Reclaimed top screen space for actual app content.
