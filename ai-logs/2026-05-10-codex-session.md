@@ -164,6 +164,19 @@ Changes made:
 - Changed chart Big Three summary from three cramped columns to stacked rows so Sagittarius cannot split awkwardly.
 - Verified chart and compatibility sections visually in the in-app browser with zero console errors.
 
+## Iteration: Scroll Stability Fix
+
+User reported scrolling got stuck near the challenge section, the bottom navigation overrode content, and returning to the top required forceful scrolling.
+
+Changes made:
+
+- Removed nested app-level scrolling from `.phone-shell`.
+- Converted the app to one normal document scroll for iPhone and Android.
+- Removed inner scrolling from the chat window so touch gestures do not get trapped.
+- Made the bottom nav a fixed high-z-index app bar with safe-area padding.
+- Added asset version bump for the scroll fix.
+- Verified scrolling down to the challenge section, scrolling back up, and Home/Chart/Match nav clicks in browser.
+
 ## Iteration: Remove Fake Status Bar
 
 User asked why the app showed `9:41` and `5G` while already inside a real phone browser.

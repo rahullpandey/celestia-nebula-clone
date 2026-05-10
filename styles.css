@@ -22,14 +22,14 @@
 html {
   width: 100%;
   overflow-x: hidden;
+  scroll-behavior: smooth;
 }
 
 body {
   width: 100%;
-  min-height: 100vh;
+  min-height: 100dvh;
   margin: 0;
-  display: grid;
-  place-items: center;
+  display: block;
   background:
     radial-gradient(circle at 20% 10%, rgba(124, 199, 255, 0.26), transparent 32%),
     radial-gradient(circle at 80% 0%, rgba(245, 211, 106, 0.16), transparent 26%),
@@ -54,13 +54,12 @@ button {
 .phone-shell {
   position: relative;
   width: min(100%, 430px);
-  min-height: 100vh;
-  max-height: 960px;
+  min-height: 100dvh;
   max-width: 100dvw;
+  margin: 0 auto;
   overflow-x: hidden;
-  overflow-y: auto;
+  overflow-y: visible;
   overscroll-behavior-x: none;
-  -webkit-overflow-scrolling: touch;
   background:
     linear-gradient(rgba(255, 255, 255, 0.04) 1px, transparent 1px),
     linear-gradient(90deg, rgba(255, 255, 255, 0.035) 1px, transparent 1px),
@@ -101,7 +100,7 @@ button {
 .screen {
   position: relative;
   z-index: 1;
-  padding: 18px 18px 96px;
+  padding: 18px 18px 118px;
 }
 
 .app-header,
@@ -824,9 +823,8 @@ select {
   display: grid;
   align-content: start;
   gap: 10px;
-  min-height: 300px;
-  max-height: 380px;
-  overflow-y: auto;
+  min-height: 260px;
+  overflow: visible;
   padding: 14px;
 }
 
@@ -954,15 +952,20 @@ select {
 }
 
 .bottom-nav {
-  position: sticky;
+  position: fixed;
+  z-index: 50;
+  left: 50%;
   bottom: 0;
+  width: min(100%, 430px);
+  transform: translateX(-50%);
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 8px;
-  padding: 12px 14px 16px;
-  background: rgba(7, 9, 20, 0.88);
+  padding: 10px 14px calc(12px + env(safe-area-inset-bottom));
+  background: rgba(7, 9, 20, 0.94);
   border-top: 1px solid var(--line);
   backdrop-filter: blur(16px);
+  box-shadow: 0 -14px 30px rgba(0, 0, 0, 0.28);
 }
 
 .nav-item {
@@ -1094,9 +1097,14 @@ select {
   }
 
   .phone-shell {
-    min-height: 900px;
+    min-height: 100dvh;
     border-radius: 32px;
-    overflow-y: auto;
+    overflow-y: visible;
+  }
+
+  .bottom-nav {
+    bottom: 28px;
+    border-radius: 22px 22px 0 0;
   }
 }
 
