@@ -151,6 +151,19 @@ Changes made:
 - Tightened report text scale and line height.
 - Changed match notes from three cramped columns to stacked readable cards.
 
+## Iteration: Cache Busting and Compatibility Card Rebuild
+
+User shared updated phone screenshots showing the public site still had old cramped compatibility and chart-summary behavior.
+
+Changes made:
+
+- Added version query strings to CSS and JS so mobile browsers request fresh assets.
+- Added no-cache meta tags to reduce stale public-site previews.
+- Rebuilt compatibility markup so the score and people cards are structurally stacked, not just CSS-reordered.
+- Changed You/Partner sign text from slash-separated wrapped text to comma-separated summaries.
+- Changed chart Big Three summary from three cramped columns to stacked rows so Sagittarius cannot split awkwardly.
+- Verified chart and compatibility sections visually in the in-app browser with zero console errors.
+
 ## Iteration: Remove Fake Status Bar
 
 User asked why the app showed `9:41` and `5G` while already inside a real phone browser.

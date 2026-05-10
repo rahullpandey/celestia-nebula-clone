@@ -119,7 +119,7 @@ function renderChart() {
   document.querySelector("#moonSign").textContent = chart.moon;
   document.querySelector("#risingSign").textContent = chart.rising;
   document.querySelector("#profileTitle").textContent = `${chart.sun} Sun, ${chart.moon} Moon, ${chart.rising} Rising`;
-  document.querySelector("#youSigns").textContent = `${chart.sun} / ${chart.moon} / ${chart.rising}`;
+  document.querySelector("#youSigns").textContent = `${chart.sun}, ${chart.moon}, ${chart.rising}`;
   document.querySelector("#aiMemory").textContent = `${chart.sun} Sun, ${chart.moon} Moon, ${chart.rising} Rising`;
 
   const houseLines = document.querySelector("#houseLines");
@@ -195,6 +195,7 @@ function recalculateCompatibility() {
   document.querySelector("#compatBody").textContent = isHigh
     ? `${chart.sun} and ${partner} create fast recognition. The relationship thrives when the spark is backed by clear plans, direct reassurance, and repair after intensity.`
     : `${chart.sun} and ${partner} ask each other to translate love languages. The bond can deepen through patience, shared rituals, and naming needs before resentment gathers.`;
+  document.querySelector("#partnerSigns").textContent = `${partner}, Pisces, Gemini`;
   const chemistry = Math.min(98, score + 7);
   const trust = Math.max(52, score - 9);
   const growth = Math.min(96, score + (isHigh ? 2 : 11));

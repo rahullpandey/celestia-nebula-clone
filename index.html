@@ -15,7 +15,10 @@
     />
     <meta property="og:type" content="website" />
     <meta name="theme-color" content="#070914" />
-    <link rel="stylesheet" href="styles.css" />
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+    <meta http-equiv="Pragma" content="no-cache" />
+    <meta http-equiv="Expires" content="0" />
+    <link rel="stylesheet" href="styles.css?v=20260510-mobile3" />
   </head>
   <body>
     <main class="phone-shell" aria-label="Celestia astrology app">
@@ -180,19 +183,21 @@
         </header>
 
         <div class="compat-card">
-          <div class="person-chip">
-            <span>R</span>
-            <div>
-              <strong>You</strong>
-              <small id="youSigns">Aries / Cancer / Libra</small>
-            </div>
-          </div>
           <div class="score-ring" id="compatScore">88</div>
-          <div class="person-chip">
-            <span>M</span>
-            <div>
-              <strong>Partner</strong>
-              <small>Leo / Pisces / Gemini</small>
+          <div class="compat-pair-row">
+            <div class="person-chip">
+              <span>R</span>
+              <div>
+                <strong>You</strong>
+                <small id="youSigns">Aries, Cancer, Libra</small>
+              </div>
+            </div>
+            <div class="person-chip">
+              <span>M</span>
+              <div>
+                <strong>Partner</strong>
+                <small id="partnerSigns">Leo, Pisces, Gemini</small>
+              </div>
             </div>
           </div>
         </div>
@@ -271,6 +276,6 @@
       </nav>
     </main>
 
-    <script src="app.js"></script>
+    <script src="app.js?v=20260510-mobile3"></script>
   </body>
 </html>

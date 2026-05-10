@@ -394,7 +394,8 @@ h3 {
 .chart-summary {
   width: 100%;
   display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
+  grid-template-columns: 1fr;
+  gap: 8px;
 }
 
 .metric-grid {
@@ -403,9 +404,12 @@ h3 {
 
 .metric-grid div,
 .chart-summary div {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
   flex: 1;
   min-width: 0;
-  padding: 12px;
+  padding: 11px 12px;
   border: 1px solid var(--line);
   border-radius: 8px;
   background: rgba(255, 255, 255, 0.06);
@@ -446,7 +450,9 @@ h3 {
 }
 
 .chart-summary strong {
-  font-size: 17px;
+  max-width: 70%;
+  font-size: 18px;
+  text-align: right;
 }
 
 .birth-form {
@@ -631,7 +637,7 @@ select {
 }
 
 .zodiac-wheel {
-  width: min(100%, 224px);
+  width: min(68vw, 216px);
   max-width: 100%;
   filter: drop-shadow(0 24px 44px rgba(0, 0, 0, 0.45));
 }
@@ -681,31 +687,30 @@ select {
 
 .compat-card {
   display: grid;
-  grid-template-areas:
-    "score score"
-    "you partner";
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 12px;
-  align-items: center;
+  gap: 14px;
+  justify-items: center;
   padding: 14px;
 }
 
-.compat-card .person-chip:first-child {
-  grid-area: you;
+.compat-pair-row {
+  width: 100%;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 10px;
 }
 
 .compat-card .score-ring {
-  grid-area: score;
   justify-self: center;
 }
 
-.compat-card .person-chip:last-child {
-  grid-area: partner;
-}
-
 .person-chip {
+  width: 100%;
   min-width: 0;
   gap: 9px;
+  padding: 10px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.055);
 }
 
 .person-chip div {
@@ -720,9 +725,9 @@ select {
 .person-chip > span {
   display: grid;
   place-items: center;
-  flex: 0 0 36px;
-  width: 36px;
-  height: 36px;
+  flex: 0 0 34px;
+  width: 34px;
+  height: 34px;
   border-radius: 50%;
   color: #111421;
   background: var(--gold);
@@ -732,8 +737,8 @@ select {
 .score-ring {
   display: grid;
   place-items: center;
-  width: 96px;
-  height: 96px;
+  width: 92px;
+  height: 92px;
   border-radius: 50%;
   background:
     radial-gradient(circle, #111421 56%, transparent 58%),
@@ -751,10 +756,14 @@ select {
 
 .compat-controls {
   display: grid;
-  grid-template-columns: minmax(0, 1fr) 132px;
+  grid-template-columns: 1fr;
   gap: 10px;
   margin: 14px 0;
   min-width: 0;
+}
+
+.compat-controls button {
+  width: 100%;
 }
 
 .compat-controls label {
