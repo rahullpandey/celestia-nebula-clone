@@ -177,6 +177,28 @@ Changes made:
 - Added asset version bump for the scroll fix.
 - Verified scrolling down to the challenge section, scrolling back up, and Home/Chart/Match nav clicks in browser.
 
+## Iteration: Onboarding, Saved Readings, and AI Follow-Ups
+
+User approved adding onboarding, saved readings, and stronger AI chat follow-ups to make the app feel more complete.
+
+Changes made:
+
+- Added a personal setup/onboarding screen for name, relationship state, and guidance goal.
+- Profile setup updates the personalized reading label and saved-reading context.
+- Added a saved readings section called "Your cosmic notebook."
+- Saved readings update from the current chart and onboarding state.
+- Added contextual follow-up buttons after AI astrologer replies.
+- Added mobile-safe styles for onboarding, saved readings, and follow-up chips.
+- Bumped CSS/JS asset versions.
+
+Verification:
+
+- Confirmed onboarding renders first.
+- Submitted the onboarding form and confirmed profile personalization updates.
+- Confirmed saved readings and checklist are reachable with normal page scroll.
+- Confirmed AI chat creates follow-up prompts after a response.
+- Confirmed app console errors remained at 0.
+
 ## Iteration: Remove Fake Status Bar
 
 User asked why the app showed `9:41` and `5G` while already inside a real phone browser.

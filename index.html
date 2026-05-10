@@ -18,7 +18,7 @@
     <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
     <meta http-equiv="Pragma" content="no-cache" />
     <meta http-equiv="Expires" content="0" />
-    <link rel="stylesheet" href="styles.css?v=20260510-scrollfix" />
+    <link rel="stylesheet" href="styles.css?v=20260511-product1" />
   </head>
   <body>
     <main class="phone-shell" aria-label="Celestia astrology app">
@@ -28,6 +28,47 @@
         <span></span>
         <span></span>
       </div>
+
+      <section class="screen onboarding-screen">
+        <header class="onboarding-hero">
+          <p class="eyebrow">Personal setup</p>
+          <h1>Build your astrology profile</h1>
+          <p>Tell Celestia what you want guidance on, then every reading adapts around your chart and current intention.</p>
+        </header>
+
+        <form class="onboarding-card" id="onboardingForm">
+          <label>
+            Name
+            <input type="text" id="userName" value="Rahul" autocomplete="name" />
+          </label>
+          <div class="form-row">
+            <label>
+              Relationship
+              <select id="relationshipStatus">
+                <option>Exploring</option>
+                <option>Single</option>
+                <option>Dating</option>
+                <option>Committed</option>
+              </select>
+            </label>
+            <label>
+              Goal
+              <select id="guidanceGoal">
+                <option>Love</option>
+                <option>Self-discovery</option>
+                <option>Career</option>
+                <option>Healing</option>
+              </select>
+            </label>
+          </div>
+          <button type="submit">Start reading</button>
+        </form>
+
+        <div class="profile-preview" id="profilePreview">
+          <span>Today’s intent</span>
+          <strong>Love guidance for Rahul</strong>
+        </div>
+      </section>
 
       <section class="screen hero-screen">
         <header class="app-header">
@@ -48,7 +89,7 @@
 
         <section class="sign-card">
           <div>
-            <p class="eyebrow">Personalized for</p>
+            <p class="eyebrow" id="profileEyebrow">Personalized for Rahul</p>
             <h2 id="profileTitle">Aries Sun, Cancer Moon, Libra Rising</h2>
           </div>
           <button class="pill-button" data-nav="profile">Tune</button>
@@ -255,6 +296,14 @@
         </form>
       </section>
 
+      <section class="screen saved-screen">
+        <header class="section-header">
+          <p class="eyebrow">Saved readings</p>
+          <h2>Your cosmic notebook</h2>
+        </header>
+        <div class="saved-list" id="savedList"></div>
+      </section>
+
       <section class="screen submission-screen">
         <header class="section-header">
           <p class="eyebrow">Challenge Ready</p>
@@ -276,6 +325,6 @@
       </nav>
     </main>
 
-    <script src="app.js?v=20260510-scrollfix"></script>
+    <script src="app.js?v=20260511-product1"></script>
   </body>
 </html>

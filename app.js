@@ -89,6 +89,12 @@ const houses = [
 
 const planetGlyphs = ["☉", "☽", "☿", "♀", "♂", "♃", "♄", "♅"];
 
+const appState = {
+  name: "Rahul",
+  relationship: "Exploring",
+  goal: "Love",
+};
+
 function signFromDate(dateValue) {
   const date = new Date(dateValue || "1997-03-21");
   const seed = date.getUTCMonth() * 31 + date.getUTCDate();
@@ -118,6 +124,7 @@ function renderChart() {
   document.querySelector("#sunSign").textContent = chart.sun;
   document.querySelector("#moonSign").textContent = chart.moon;
   document.querySelector("#risingSign").textContent = chart.rising;
+  document.querySelector("#profileEyebrow").textContent = `Personalized for ${appState.name}`;
   document.querySelector("#profileTitle").textContent = `${chart.sun} Sun, ${chart.moon} Moon, ${chart.rising} Rising`;
   document.querySelector("#youSigns").textContent = `${chart.sun}, ${chart.moon}, ${chart.rising}`;
   document.querySelector("#aiMemory").textContent = `${chart.sun} Sun, ${chart.moon} Moon, ${chart.rising} Rising`;
@@ -160,6 +167,30 @@ function renderChart() {
   const insightBody = `${chart.rising} rising shapes the first impression, while your ${chart.moon} Moon shows what your nervous system needs before it can trust the next step.`;
   document.querySelector("#chartInsightTitle").textContent = insightTitle;
   document.querySelector("#chartInsightBody").textContent = insightBody;
+}
+
+function renderProfilePreview() {
+  document.querySelector("#profilePreview strong").textContent = `${appState.goal} guidance for ${appState.name}`;
+}
+
+function renderSavedReadings() {
+  const chart = deriveChart();
+  const saved = [
+    ["Daily signal", periods.daily.title, `Best for ${appState.goal.toLowerCase()}: ${periods.daily.focus}.`],
+    ["Chart insight", `${chart.sun} Sun, ${chart.moon} Moon`, `${chart.rising} rising shapes how people first read your energy.`],
+    ["Relationship note", `${appState.relationship} pattern`, "Look for consistency after chemistry, not instead of it."],
+  ];
+  document.querySelector("#savedList").innerHTML = saved
+    .map(
+      ([label, title, body]) => `
+        <article>
+          <span>${label}</span>
+          <strong>${title}</strong>
+          <p>${body}</p>
+        </article>
+      `
+    )
+    .join("");
 }
 
 function setPeriod(period) {
@@ -239,6 +270,22 @@ function addMessage(text, type) {
   node.scrollIntoView({ behavior: "smooth", block: "end" });
 }
 
+function renderFollowUps(question) {
+  const lower = question.toLowerCase();
+  const prompts = lower.includes("career")
+    ? ["What skill should I sharpen?", "When should I pitch?", "What blocks my visibility?"]
+    : lower.includes("today") || lower.includes("energy")
+      ? ["What should I avoid today?", "What should I say yes to?", "How do I reset tonight?"]
+      : ["What should I ask for?", "What pattern should I stop?", "What is the next honest step?"];
+  const existing = document.querySelector(".follow-up-row");
+  if (existing) existing.remove();
+  const row = document.createElement("div");
+  row.className = "follow-up-row";
+  row.innerHTML = prompts.map((prompt) => `<button type="button" data-prompt="${prompt}">${prompt}</button>`).join("");
+  document.querySelector("#chatWindow").append(row);
+  row.scrollIntoView({ behavior: "smooth", block: "end" });
+}
+
 function showTyping() {
   const node = document.createElement("div");
   node.className = "message bot typing";
@@ -253,7 +300,7 @@ function astrologerReply(question) {
   const chart = deriveChart();
   const lower = question.toLowerCase();
   if (lower.includes("relationship") || lower.includes("love")) {
-    return `With ${chart.moon} Moon, intimacy improves when care becomes observable. Ask for the exact kind of reassurance you need, then watch who can meet you without making your sensitivity a problem.`;
+    return `${appState.name}, with ${chart.moon} Moon, intimacy improves when care becomes observable. Ask for the exact kind of reassurance you need, then watch who can meet you without making your sensitivity a problem.`;
   }
   if (lower.includes("career") || lower.includes("work")) {
     return `${chart.rising} rising gives you a public style people notice quickly. This week favors visible polish: update the portfolio, send the follow-up, and choose one skill to make unmistakable.`;
@@ -321,6 +368,7 @@ document.querySelector("#chatForm").addEventListener("submit", (event) => {
   setTimeout(() => {
     typing.remove();
     addMessage(astrologerReply(value), "bot");
+    renderFollowUps(value);
   }, 620);
 });
 
@@ -333,6 +381,22 @@ document.querySelectorAll(".prompt-chips button").forEach((button) => {
 
 document.querySelector("#partnerSign").innerHTML = signs.map((sign) => `<option>${sign}</option>`).join("");
 document.querySelector("#partnerSign").value = "Leo";
+document.querySelector("#onboardingForm").addEventListener("submit", (event) => {
+  event.preventDefault();
+  appState.name = document.querySelector("#userName").value.trim() || "Friend";
+  appState.relationship = document.querySelector("#relationshipStatus").value;
+  appState.goal = document.querySelector("#guidanceGoal").value;
+  renderProfilePreview();
+  renderChart();
+  renderSavedReadings();
+  document.querySelector(".hero-screen").scrollIntoView({ behavior: "smooth" });
+});
+document.querySelector("#chatWindow").addEventListener("click", (event) => {
+  const button = event.target.closest("button[data-prompt]");
+  if (!button) return;
+  document.querySelector("#chatInput").value = button.dataset.prompt;
+  document.querySelector("#chatForm").requestSubmit();
+});
 renderLocationSuggestions(document.querySelector("#birthPlace").value);
 document.querySelector("#locationSuggestions").hidden = true;
 document.querySelector("#shuffleRitual").addEventListener("click", () => {
@@ -342,5 +406,7 @@ document.querySelector("#shuffleRitual").addEventListener("click", () => {
   document.querySelector("#ritualText").textContent = next;
 });
 renderChart();
+renderProfilePreview();
+renderSavedReadings();
 setPeriod("daily");
 recalculateCompatibility();

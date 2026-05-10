@@ -242,11 +242,59 @@ h3 {
 .compat-card,
 .report-card,
 .chat-window,
+.onboarding-card,
+.profile-preview,
 .submission-screen .check-list {
   border: 1px solid var(--line);
   background: var(--panel);
   backdrop-filter: blur(16px);
   border-radius: 8px;
+}
+
+.onboarding-hero {
+  display: grid;
+  gap: 10px;
+  margin-bottom: 18px;
+}
+
+.onboarding-hero p:last-child {
+  margin: 0;
+  color: var(--muted);
+  line-height: 1.5;
+}
+
+.onboarding-card {
+  display: grid;
+  gap: 12px;
+  padding: 14px;
+}
+
+.onboarding-card button {
+  min-height: 44px;
+  border: 0;
+  border-radius: 999px;
+  background: linear-gradient(135deg, var(--gold), var(--coral));
+  color: #160c0c;
+  font-weight: 720;
+}
+
+.profile-preview {
+  display: grid;
+  gap: 5px;
+  margin-top: 12px;
+  padding: 13px 14px;
+}
+
+.profile-preview span {
+  color: var(--gold);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.profile-preview strong {
+  font-size: 17px;
 }
 
 .cosmic-dashboard,
@@ -861,6 +909,20 @@ select {
 .message.typing i:nth-child(2) { animation-delay: 120ms; }
 .message.typing i:nth-child(3) { animation-delay: 240ms; }
 
+.follow-up-row {
+  display: grid;
+  gap: 8px;
+}
+
+.follow-up-row button {
+  min-height: 36px;
+  border: 1px solid rgba(124, 199, 255, 0.26);
+  border-radius: 999px;
+  background: rgba(124, 199, 255, 0.1);
+  color: var(--ink);
+  font-size: 13px;
+}
+
 .memory-card {
   display: grid;
   gap: 8px;
@@ -938,6 +1000,38 @@ select {
   display: grid;
   gap: 13px;
   padding: 16px;
+}
+
+.saved-list {
+  display: grid;
+  gap: 10px;
+}
+
+.saved-list article {
+  padding: 14px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: rgba(20, 24, 43, 0.82);
+}
+
+.saved-list span {
+  color: var(--gold);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.saved-list strong {
+  display: block;
+  margin-top: 6px;
+  font-size: 17px;
+}
+
+.saved-list p {
+  margin: 6px 0 0;
+  color: var(--muted);
+  line-height: 1.45;
 }
 
 .check-list label {
