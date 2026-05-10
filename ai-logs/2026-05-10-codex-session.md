@@ -122,3 +122,17 @@ Changes made:
 - Renamed the surface to "Reading context" for a more natural product tone.
 - Replaced the cramped one-line right-aligned memory row with a small stacked card.
 - Changed sign text from dot-separated chip text to a readable sentence-style chart summary.
+
+## Iteration: Birth Chart Generator Redesign
+
+User said the birth chart generator looked odd.
+
+Changes made:
+
+- Reworked the chart form into a cohesive card instead of loose fields.
+- Placed Date and Time in a compact mobile-safe row.
+- Kept Place full width with hidden-until-needed recommendations.
+- Wrapped the zodiac SVG in a dedicated "Natal wheel" card.
+- Reduced chart size for better phone fit.
+- Made the Sun/Moon/Rising summary a full-width grid so longer signs fit better.
+- Simplified the house list into one-column readable rows on mobile.

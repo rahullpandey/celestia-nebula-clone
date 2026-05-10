@@ -400,6 +400,12 @@ h3 {
   gap: 10px;
 }
 
+.chart-summary {
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
 .metric-grid {
   margin-top: 18px;
 }
@@ -407,6 +413,7 @@ h3 {
 .metric-grid div,
 .chart-summary div {
   flex: 1;
+  min-width: 0;
   padding: 12px;
   border: 1px solid var(--line);
   border-radius: 8px;
@@ -444,12 +451,28 @@ h3 {
   margin-top: 3px;
   font-size: 19px;
   font-weight: 720;
+  overflow-wrap: anywhere;
+}
+
+.chart-summary strong {
+  font-size: 17px;
 }
 
 .birth-form {
   display: grid;
-  gap: 10px;
+  gap: 12px;
   margin-bottom: 18px;
+  padding: 14px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: rgba(20, 24, 43, 0.82);
+  backdrop-filter: blur(16px);
+}
+
+.form-row {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 10px;
 }
 
 .action-strip {
@@ -520,6 +543,7 @@ select {
   background: rgba(255, 255, 255, 0.08);
   color: var(--ink);
   font-size: 16px;
+  min-width: 0;
 }
 
 select {
@@ -540,10 +564,11 @@ select {
 }
 
 .location-suggestions {
-  display: flex;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 8px;
   max-width: 100%;
-  overflow-x: auto;
+  overflow: visible;
   padding: 2px 0 4px;
   scrollbar-width: none;
 }
@@ -558,7 +583,6 @@ select {
 }
 
 .location-suggestions button {
-  flex: 0 0 auto;
   min-height: 34px;
   border: 1px solid rgba(124, 199, 255, 0.28);
   border-radius: 999px;
@@ -566,16 +590,54 @@ select {
   background: rgba(124, 199, 255, 0.12);
   color: var(--ink);
   font-size: 13px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 .chart-layout {
   display: grid;
-  gap: 14px;
+  gap: 12px;
   justify-items: center;
 }
 
+.wheel-card {
+  width: 100%;
+  display: grid;
+  justify-items: center;
+  gap: 10px;
+  padding: 14px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background:
+    radial-gradient(circle at 50% 42%, rgba(124, 199, 255, 0.14), transparent 48%),
+    rgba(20, 24, 43, 0.72);
+}
+
+.wheel-card-header {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: var(--muted);
+  font-size: 12px;
+}
+
+.wheel-card-header span {
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  font-size: 10px;
+  font-weight: 700;
+  color: var(--gold);
+}
+
+.wheel-card-header strong {
+  font-size: 12px;
+  font-weight: 650;
+}
+
 .zodiac-wheel {
-  width: min(100%, 310px);
+  width: min(100%, 260px);
   max-width: 100%;
   filter: drop-shadow(0 24px 44px rgba(0, 0, 0, 0.45));
 }
@@ -591,8 +653,8 @@ select {
 }
 
 .chart-insight-card {
-  margin-top: 16px;
-  padding: 16px;
+  margin-top: 12px;
+  padding: 14px;
   background:
     linear-gradient(135deg, rgba(124, 199, 255, 0.12), rgba(245, 211, 106, 0.08)),
     rgba(255, 255, 255, 0.055);
@@ -606,21 +668,21 @@ select {
 
 .house-list {
   display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
+  grid-template-columns: 1fr;
   gap: 10px;
-  margin-top: 16px;
+  margin-top: 12px;
 }
 
 .house-list article {
-  padding: 12px;
+  padding: 12px 14px;
   border: 1px solid var(--line);
   border-radius: 8px;
   background: rgba(255, 255, 255, 0.065);
 }
 
 .house-list strong {
-  display: block;
-  margin-top: 4px;
+  display: inline-block;
+  margin: 0 0 0 6px;
 }
 
 .compat-card {

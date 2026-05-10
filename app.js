@@ -333,6 +333,7 @@ document.querySelectorAll(".prompt-chips button").forEach((button) => {
 document.querySelector("#partnerSign").innerHTML = signs.map((sign) => `<option>${sign}</option>`).join("");
 document.querySelector("#partnerSign").value = "Leo";
 renderLocationSuggestions(document.querySelector("#birthPlace").value);
+document.querySelector("#locationSuggestions").hidden = true;
 document.querySelector("#shuffleRitual").addEventListener("click", () => {
   const current = document.querySelector("#ritualText").textContent;
   const next = rituals.find((ritual) => ritual !== current) || rituals[0];

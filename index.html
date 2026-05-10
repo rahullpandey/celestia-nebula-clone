@@ -114,14 +114,16 @@
         </header>
 
         <form class="birth-form" id="birthForm">
-          <label>
-            Date
-            <input type="date" id="birthDate" value="1997-03-21" />
-          </label>
-          <label>
-            Time
-            <input type="time" id="birthTime" value="06:42" />
-          </label>
+          <div class="form-row">
+            <label>
+              Date
+              <input type="date" id="birthDate" value="1997-03-21" />
+            </label>
+            <label>
+              Time
+              <input type="time" id="birthTime" value="06:42" />
+            </label>
+          </div>
           <div class="location-field">
             <label for="birthPlace">Place</label>
             <input
@@ -139,20 +141,26 @@
         </form>
 
         <div class="chart-layout">
-          <svg class="zodiac-wheel" viewBox="0 0 300 300" role="img" aria-label="Circular birth chart with zodiac houses">
-            <defs>
-              <radialGradient id="wheelGlow" cx="50%" cy="50%">
-                <stop offset="0%" stop-color="#fff8d7" />
-                <stop offset="48%" stop-color="#7cc7ff" />
-                <stop offset="100%" stop-color="#15182e" />
-              </radialGradient>
-            </defs>
-            <circle cx="150" cy="150" r="138" fill="#101323" stroke="#f5d36a" stroke-width="2" />
-            <circle cx="150" cy="150" r="100" fill="url(#wheelGlow)" opacity=".88" />
-            <circle cx="150" cy="150" r="58" fill="#15182e" stroke="#ffffff" stroke-opacity=".55" />
-            <g id="houseLines"></g>
-            <g id="planetMarks"></g>
-          </svg>
+          <div class="wheel-card">
+            <div class="wheel-card-header">
+              <span>Natal wheel</span>
+              <strong>12 houses</strong>
+            </div>
+            <svg class="zodiac-wheel" viewBox="0 0 300 300" role="img" aria-label="Circular birth chart with zodiac houses">
+              <defs>
+                <radialGradient id="wheelGlow" cx="50%" cy="50%">
+                  <stop offset="0%" stop-color="#fff8d7" />
+                  <stop offset="48%" stop-color="#7cc7ff" />
+                  <stop offset="100%" stop-color="#15182e" />
+                </radialGradient>
+              </defs>
+              <circle cx="150" cy="150" r="138" fill="#101323" stroke="#f5d36a" stroke-width="2" />
+              <circle cx="150" cy="150" r="100" fill="url(#wheelGlow)" opacity=".88" />
+              <circle cx="150" cy="150" r="58" fill="#15182e" stroke="#ffffff" stroke-opacity=".55" />
+              <g id="houseLines"></g>
+              <g id="planetMarks"></g>
+            </svg>
+          </div>
           <div class="chart-summary">
             <div><span>Sun</span><strong id="sunSign">Aries</strong></div>
             <div><span>Moon</span><strong id="moonSign">Cancer</strong></div>
